@@ -11,11 +11,11 @@ class ExerciseActivity : AppCompatActivity() {
     private var binding: ActivityExerciseBinding? = null
 
     private var restTimer: CountDownTimer? = null
-    private var restTimerDuration: Long = 10000
+    private var restTimerDuration: Long = 1000
     private var restProgress = 0
 
     private var exerciseTimer: CountDownTimer? = null
-    private var exerciseTimerDuration: Long = 30000
+    private var exerciseTimerDuration: Long = 1000
     private var exerciseProgress = 0
 
     private var exerciseList: ArrayList<ExerciseModel>? = null
@@ -53,7 +53,6 @@ class ExerciseActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 currentExercisePosition++
-                Toast.makeText(this@ExerciseActivity, "Start Exercising", Toast.LENGTH_SHORT).show()
                 setupExerciseView()
             }
 
@@ -70,13 +69,25 @@ class ExerciseActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                Toast.makeText(this@ExerciseActivity, "Start Resting", Toast.LENGTH_SHORT).show()
+                if (currentExercisePosition < exerciseList?.size!! - 1) {
+                    setupRestView()
+                } else {
+                    Toast.makeText(this@ExerciseActivity, "Congratulations !!!", Toast.LENGTH_LONG).show()
+                    onBackPressed()
+                }
             }
 
         }.start()
     }
 
     private fun setupRestView() {
+
+        binding?.flRestView?.visibility = View.VISIBLE
+        binding?.flExerciseView?.visibility = View.INVISIBLE
+        binding?.textViewTitle?.visibility = View.VISIBLE
+        binding?.textViewExercise?.visibility = View.INVISIBLE
+        binding?.exerciseImageView?.visibility = View.INVISIBLE
+
         if (restTimer != null) {
             restTimer?.cancel()
             restProgress = 0
@@ -85,9 +96,14 @@ class ExerciseActivity : AppCompatActivity() {
     }
 
     private fun setupExerciseView() {
-        binding?.flProgressBar?.visibility = View.INVISIBLE
+        binding?.flRestView?.visibility = View.INVISIBLE
         binding?.flExerciseView?.visibility = View.VISIBLE
-        binding?.textViewTitle?.text = exerciseList?.get(currentExercisePosition)?.getName()
+        binding?.textViewTitle?.visibility = View.INVISIBLE
+        binding?.textViewExercise?.visibility = View.VISIBLE
+        binding?.exerciseImageView?.visibility = View.VISIBLE
+        binding?.textViewExercise?.text = exerciseList?.get(currentExercisePosition)?.getName()
+        binding?.exerciseImageView?.setImageResource(exerciseList!![currentExercisePosition].getImage())
+
         if (exerciseTimer != null) {
             exerciseTimer?.cancel()
             exerciseProgress = 0
