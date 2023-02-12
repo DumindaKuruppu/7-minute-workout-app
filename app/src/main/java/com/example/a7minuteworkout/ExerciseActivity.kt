@@ -18,6 +18,9 @@ class ExerciseActivity : AppCompatActivity() {
     private var exerciseTimerDuration: Long = 30000
     private var exerciseProgress = 0
 
+    private var exerciseList: ArrayList<ExerciseModel>? = null
+    private var currentExercisePosition = -1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityExerciseBinding.inflate(layoutInflater)
@@ -28,6 +31,8 @@ class ExerciseActivity : AppCompatActivity() {
         if (supportActionBar != null) {
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
+
+        exerciseList = Constants.defaultExerciseList()
 
         binding?.toolbarExercise?.setNavigationOnClickListener {
             onBackPressed()
@@ -47,6 +52,7 @@ class ExerciseActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
+                currentExercisePosition++
                 Toast.makeText(this@ExerciseActivity, "Start Exercising", Toast.LENGTH_SHORT).show()
                 setupExerciseView()
             }
@@ -81,7 +87,7 @@ class ExerciseActivity : AppCompatActivity() {
     private fun setupExerciseView() {
         binding?.flProgressBar?.visibility = View.INVISIBLE
         binding?.flExerciseView?.visibility = View.VISIBLE
-        binding?.textViewTitle?.text = "Exercise Name"
+        binding?.textViewTitle?.text = exerciseList?.get(currentExercisePosition)?.getName()
         if (exerciseTimer != null) {
             exerciseTimer?.cancel()
             exerciseProgress = 0
