@@ -11,11 +11,11 @@ class ExerciseActivity : AppCompatActivity() {
     private var binding: ActivityExerciseBinding? = null
 
     private var restTimer: CountDownTimer? = null
-    private var restTimerDuration: Long = 1000
+    private var restTimerDuration: Long = 5000
     private var restProgress = 0
 
     private var exerciseTimer: CountDownTimer? = null
-    private var exerciseTimerDuration: Long = 1000
+    private var exerciseTimerDuration: Long = 30000
     private var exerciseProgress = 0
 
     private var exerciseList: ArrayList<ExerciseModel>? = null
@@ -87,11 +87,15 @@ class ExerciseActivity : AppCompatActivity() {
         binding?.textViewTitle?.visibility = View.VISIBLE
         binding?.textViewExercise?.visibility = View.INVISIBLE
         binding?.exerciseImageView?.visibility = View.INVISIBLE
+        binding?.textViewExerciseUpcomingLabel?.visibility = View.VISIBLE
+        binding?.textViewUpcomingExerciseName?.visibility = View.VISIBLE
 
         if (restTimer != null) {
             restTimer?.cancel()
             restProgress = 0
         }
+
+        binding?.textViewUpcomingExerciseName?.text = exerciseList!![currentExercisePosition + 1].getName()
         setRestProgressBar()
     }
 
@@ -101,6 +105,8 @@ class ExerciseActivity : AppCompatActivity() {
         binding?.textViewTitle?.visibility = View.INVISIBLE
         binding?.textViewExercise?.visibility = View.VISIBLE
         binding?.exerciseImageView?.visibility = View.VISIBLE
+        binding?.textViewExerciseUpcomingLabel?.visibility = View.INVISIBLE
+        binding?.textViewUpcomingExerciseName?.visibility = View.INVISIBLE
         binding?.textViewExercise?.text = exerciseList?.get(currentExercisePosition)?.getName()
         binding?.exerciseImageView?.setImageResource(exerciseList!![currentExercisePosition].getImage())
 
