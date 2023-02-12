@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         android:background="@color/white"
-        android:theme="@style/ToolBarThem"
+        android:theme="@style/ToolBarTheme"
         app:layout_constraintTop_toTopOf="parent"
         app:titleTextColor="@color/design_default_color_primary" />
 
@@ -36,8 +36,7 @@
         android:background="@drawable/item_circular_color_accent_border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarExercise">
+        app:layout_constraintStart_toStartOf="parent">
 
         <ProgressBar
             android:id="@+id/progressBar"

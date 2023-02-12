@@ -14,7 +14,8 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="ToolBarThem" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
+    <style name="ToolBarTheme" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
         <item name="colorControlNormal">@color/toolbar_color_control_normal</item>
     </style>
+
 </resources>
