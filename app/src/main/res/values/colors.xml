@@ -11,4 +11,5 @@
     <color name="toolbar_color_control_normal">#000000</color>
     <color name="color_accent">#4CAF50</color>
     <color name="light_grey">#CCCCCC</color>
+    <color name="grey">#C4C4C4</color>
 </resources>
