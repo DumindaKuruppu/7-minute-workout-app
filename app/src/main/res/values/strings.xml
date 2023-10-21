@@ -14,4 +14,14 @@
     <string name="warning_message">This will stop the Workout ! Are you sure you want to quit ?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="bmi">BMI</string>
+    <string name="calculator">Calculator</string>
+    <string name="weight">Weight (kg)</string>
+    <string name="height">Height (cm)</string>
+    <string name="your_bmi_is">YOUR BMI IS</string>
+    <string name="calculate">Calculate</string>
+    <string name="metric_units">Metric Units</string>
+    <string name="imperial_units">Imperial Units</string>
+    <string name="imperial_height_inches">Inches</string>
+    <string name="imperial_height_feet">Feet</string>
 </resources>
