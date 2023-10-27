@@ -25,4 +25,6 @@
     <string name="imperial_height_inches">Inches</string>
     <string name="imperial_height_feet">Feet</string>
     <string name="history">History</string>
+    <string name="no_data_available">NO DATA AVAILABLE !</string>
+    <string name="completed_exercises">Completed Exercises</string>
 </resources>

@@ -20,11 +20,11 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var binding: ActivityExerciseBinding? = null
 
     private var restTimer: CountDownTimer? = null
-    private var restTimerDuration: Long = 500
+    private var restTimerDuration: Long = 5000
     private var restProgress = 0
 
     private var exerciseTimer: CountDownTimer? = null
-    private var exerciseTimerDuration: Long = 500
+    private var exerciseTimerDuration: Long = 1000 * 30
     private var exerciseProgress = 0
 
     private var exerciseList: ArrayList<ExerciseModel>? = null
@@ -59,6 +59,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     override fun onBackPressed() {
+        super.onBackPressed()
         customDialogForBackButton()
     }
 
